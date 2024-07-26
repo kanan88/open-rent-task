@@ -12,24 +12,11 @@
 .list__item {
   flex: 0 0 50%;
   margin-bottom: 0.7rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
 }
 
-.list__item::before {
-  content: '';
-  display: inline-block;
-  height: 1rem;
-  width: 1rem;
-  margin-right: 0.7rem;
-
-  background-image: url(/img/chevron-thin-right.svg);
-  background-size: cover;
-
-  @supports (-webkit-mask-image: url()) or (mask-image: url()) {
-    background-color: var(--color-primary);
-    -webkit-mask-image: url(/img/chevron-thin-right.svg);
-    -webkit-mask-size: cover;
-    mask-image: url(/img/chevron-thin-right.svg);
-    mask-size: cover;
-    background-image: none;
-  }
+.list__icon {
+  margin-right: 9px;
 }
