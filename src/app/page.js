@@ -1,95 +1,86 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+import styles from './page.module.css';
+
+import Header from '@/components/Header';
+import MainContent from '@/components/MainContent';
+import SideBar from '@/components/SideBar';
+import Overview from '@/components/Overview';
+import Details from '@/components/Details';
+import Gallery from '@/components/Gallery';
+import Description from '@/components/Description';
+import List from '@/components/List';
+import Recommend from '@/components/Recommend';
+import UserReviews from '@/components/UserReviews';
+import Review from '@/components/Review';
+import InlineButton from '@/components/InlineButton';
+import CTA from '@/components/CTA';
+import CTAButton from '@/components/CTAButton';
+
+const reviews = [
+  {
+    text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi nisi dignissimos debitis ratione sapiente saepe. Accusantium cumque, quas, ut corporis incidunt deserunt quae architecto voluptate.',
+    image: '/img/monkey.png',
+    name: 'Longhouse Lettings Brighton',
+    title: 'Landlord',
+    rating: '8.9',
+  },
+  {
+    text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi nisi dignissimos debitis ratione sapiente saepe. Accusantium cumque, quas, ut corporis incidunt deserunt quae architecto voluptate.',
+    image: '/img/user-2.jpg',
+    name: 'Isabelle Thomas',
+    title: 'Last renter',
+    rating: '9.3',
+  },
+];
 
 export default function Home() {
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.js</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
+    <div className={styles.container}>
+      <Header />
+
+      <div className={styles.content}>
+        <SideBar />
+
+        <MainContent>
+          <Gallery />
+          <Overview />
+
+          <Details>
+            <Description>
+              <p className={styles.paragraph}>
+                We are so proud of this beautiful house, it was completely
+                redone to a high standard, brand new flooring throughout the
+                house, and the parquet flooring on the ground floor brings out
+                the character of the house.
+              </p>
+
+              <p className={styles.paragraph}>
+                The views from the house are stunning from the front rooms, you
+                can see the sea. Back rooms you can see the rolling hills of the
+                South Downs. And there is even a private gate, so you can access
+                the downs through the garden. Do you love walks? This home is
+                for you!
+              </p>
+
+              <List />
+              <Recommend />
+              <br />
+              <CTAButton title1="Rent Now" title2="Request Viewing" />
+            </Description>
+
+            <UserReviews>
+              {reviews.map((review, index) => (
+                <Review key={index} review={review} />
+              ))}
+
+              <InlineButton link="#/">
+                Other similar properties <span>&rarr;</span>
+              </InlineButton>
+            </UserReviews>
+          </Details>
+
+          <CTA />
+        </MainContent>
       </div>
-
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore starter templates for Next.js.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
+    </div>
   );
 }

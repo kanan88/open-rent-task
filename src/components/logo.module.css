@@ -1,0 +1,8 @@
+.logo {
+  height: 3.25rem;
+  margin-left: 2rem;
+  color: var(--color-primary);
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
